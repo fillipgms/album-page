@@ -1,0 +1,192 @@
+:root {
+    --primary: rgba(30, 215, 96, 1);
+    --fg-primary: rgba(224, 224, 224, 1);
+    --fg-secondary: rgba(137, 137, 137, 1);
+    --fg-tertiary: rgba(50, 50, 50, 1);
+    --fg-light-secondary: rgba(110, 110, 110, 1);
+    --fg-light-primary: rgba(26, 26, 26, 1);
+    --bg-tertiary: rgba(51, 56, 66, 1);
+    --bg-secondary: rgba(32, 32, 32, 1);
+    --bg-primary: rgba(17, 17, 17, 1);
+    --bg-main: rgba(6, 6, 6, 1);
+    --bg-light-main: rgba(240, 240, 240, 1);
+    --light-primary: rgba(19, 191, 81, 1);
+    --bg-album-blue: rgb(33, 46, 73);
+
+    --h3: 20px;
+    --sub: 14px;
+    --small: 12px;
+    --p: 16px;
+    --h4: 18px;
+}
+
+img {
+    max-width: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-main);
+    color: var(--fg-primary);
+    display: grid;
+    padding: 1rem;
+    font-family: Satoshi, sans-serif;
+    grid-template-columns: 0.3fr 1fr;
+    gap: 1rem;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 0.7fr 0.3fr;
+    background: linear-gradient(var(--bg-album-blue), var(--bg-primary));
+    border-radius: 10px;
+    border: solid 1px var(--bg-secondary);
+    padding: 2rem 3rem;
+    position: relative;
+    gap: 5rem;
+}
+
+main > * {
+    z-index: 1;
+}
+
+main::after {
+    content: "";
+    position: absolute;
+    background-color: rgba(6, 6, 6, 0.53);
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
+header {
+    margin-bottom: 2rem;
+}
+
+header > * + * {
+    margin-top: 1rem;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#songInfo li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#songInfo li:not(:first-child) {
+    color: var(--fg-secondary);
+}
+
+#songInfo li + li::before {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 3px;
+    background-color: var(--fg-secondary);
+}
+
+#title {
+    text-transform: uppercase;
+}
+
+#songsTable {
+    width: 100%;
+}
+
+.tableDesign {
+    display: grid;
+    grid-template-columns: 4rem 1fr 1fr 2rem;
+    align-items: center;
+}
+
+.tableDesign > *:nth-child(1) {
+    text-align: center;
+}
+
+#tableHeader {
+    color: var(--fg-secondary);
+    padding: 0.5rem 0;
+    border-bottom: solid 1px var(--fg-tertiary);
+}
+
+#allSongsContainer {
+    padding: 1rem 0;
+}
+
+#allSongsContainer > * + * {
+    margin-top: 1rem;
+}
+
+.song {
+    color: var(--fg-secondary);
+}
+
+.song div h2 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--fg-primary);
+}
+
+.song div h3 {
+    font-size: 0.8rem;
+    font-weight: 100;
+    color: var(--fg-secondary);
+}
+
+#genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+#coverAndArtists > * + * {
+    margin-top: 1rem;
+}
+
+#coverAndArtists img {
+    border-radius: 10px;
+    width: 100%;
+}
+
+#genres h5 {
+    font-weight: normal;
+    font-size: var(--sub);
+    color: var(--fg-secondary);
+    letter-spacing: 3%;
+    padding: 5px 20px;
+    border: solid 2px var(--fg-tertiary);
+    border-radius: 999px;
+}
+
+#artists > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--fg-secondary);
+}
+
+#artists > div h4 {
+    font-weight: 500;
+}
+
+#artists > div img {
+    border-radius: 999px;
+    width: 3.75rem;
+}
+
+aside {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+}
