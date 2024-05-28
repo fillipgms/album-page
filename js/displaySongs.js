@@ -44,6 +44,7 @@ const songs = [
 let playlist = [];
 
 const allSongsContainer = document.getElementById("allSongsContainer");
+const playlistContainer = document.getElementById("playlistContainer");
 
 function elementFromHtml(html) {
     const template = document.createElement("template");
@@ -53,7 +54,25 @@ function elementFromHtml(html) {
 }
 
 function addSongToPlaylist(song) {
-    playlist.push(song);
+    console.log(song);
+
+    if (playlist.indexOf(song) === -1) {
+        playlist.push(song);
+
+        playlistContainer.appendChild(
+            elementFromHtml(`
+                <div class="song playlistSong">
+                    <div>
+                        <img src="assets/cover.png"/>
+                    </div>
+                    <div>
+                        <h2>${song}</h2>
+                        <h3>Billie Eilish</h3>
+                    </div>
+                </div>
+            `)
+        );
+    }
 }
 
 for (let i = 0; i < songs.length; i++) {
@@ -79,7 +98,9 @@ allSongs.forEach((song) => {
         if (!song.querySelector("button")) {
             song.appendChild(
                 elementFromHtml(
-                    `<button onclick="addSongToPlaylist('hi')">
+                    `<button onclick="addSongToPlaylist('${
+                        song.querySelector("h2").innerText
+                    }')">
                         <img src="assets/icons/playSong.svg"/>
                     </button>`
                 )

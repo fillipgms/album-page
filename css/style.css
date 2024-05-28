@@ -30,6 +30,11 @@ img {
     box-sizing: border-box;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 body {
     background: var(--bg-main);
     color: var(--fg-primary);
@@ -110,7 +115,7 @@ header ul {
 
 .tableDesign {
     display: grid;
-    grid-template-columns: 4rem 1fr 1fr 2rem;
+    grid-template-columns: 4rem 2fr 1fr 2rem;
     align-items: center;
 }
 
@@ -206,11 +211,68 @@ header ul {
 aside {
     border-radius: 10px;
     padding: 1rem 1.5rem;
+    background-color: var(--bg-primary);
+}
+
+aside > * + * {
+    margin-top: 1rem;
+}
+
+.playlistSong {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.playlistSong img {
+    border-radius: 5px;
+}
+
+.playlistSong div:nth-child(1) {
+    position: relative;
+}
+
+.playlistSong:hover {
+    background-color: var(--bg-secondary);
+}
+
+.playlistSong:hover div:nth-child(1)::before,
+.playlistSong:hover div:nth-child(1)::after {
+    display: block;
+}
+
+.playlistSong div:nth-child(1)::before {
+    content: url("../assets/icons/playSongSimple.svg");
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 2;
+}
+
+.playlistSong div:nth-child(1)::after {
+    content: "";
+    display: none;
+    position: absolute;
+    height: 3rem;
+    width: 3rem;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-color: rgba(17, 17, 17, 0.5);
 }
 
 @media screen and (max-width: 1024px) {
     body {
         display: block;
+    }
+
+    aside {
+        display: none;
     }
 
     main {
