@@ -41,6 +41,8 @@ const songs = [
     },
 ];
 
+let playlist = [];
+
 const allSongsContainer = document.getElementById("allSongsContainer");
 
 function elementFromHtml(html) {
@@ -48,6 +50,10 @@ function elementFromHtml(html) {
     template.innerHTML = html.trim();
 
     return template.content.firstElementChild;
+}
+
+function addSongToPlaylist(song) {
+    playlist.push(song);
 }
 
 for (let i = 0; i < songs.length; i++) {
@@ -60,8 +66,31 @@ for (let i = 0; i < songs.length; i++) {
                     <h3>Billie Eilish</h3>
                 </div>
                 <span>${songs[i].duration}</span>
-                <span><img src="assets/icons/like.svg" /></span>
+                <span><img src="assets/icons/like.svg" class="likeBtn" /></span>
             </div>
         `)
     );
 }
+
+const allSongs = document.querySelectorAll(".song");
+
+allSongs.forEach((song) => {
+    song.addEventListener("mouseenter", () => {
+        if (!song.querySelector("button")) {
+            song.appendChild(
+                elementFromHtml(
+                    `<button onclick="addSongToPlaylist('hi')">
+                        <img src="assets/icons/playSong.svg"/>
+                    </button>`
+                )
+            );
+        }
+    });
+
+    song.addEventListener("mouseleave", () => {
+        const button = song.querySelector("button");
+        if (button) {
+            song.removeChild(button);
+        }
+    });
+});
